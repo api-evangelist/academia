@@ -1,0 +1,53 @@
+Contact: mailto:security@academia.edu
+
+# We do not operate a formal public bug bounty program.
+# We may award discretionary bounties for high-quality reports.
+
+# ---- What Makes a Good Report ----
+#
+# We value reports that clearly demonstrate a real, actionable security issue affecting users.
+#
+# Strong reports:
+# - Describe a confirmed vulnerability (not a theoretical concern)
+# - Include clear, reproducible steps
+# - Demonstrate concrete impact
+#
+# A minimal reproduction, proof-of-concept code, or a short screen recording is especially helpful.
+#
+# Where possible, please use the terminology from Bugcrowd’s Vulnerability Rating Taxonomy and
+# include a severity rating (P1–P5): https://bugcrowd.com/vulnerability-rating-taxonomy
+
+# ---- What We Prioritize ----
+#
+# We prioritize reports based on impact and clarity.
+#
+# Examples of high-impact issues:
+# - Authentication bypass or account takeover
+# - Data exposure or access control issues
+# - Cross-site scripting (XSS) with working proof of concept
+# - Privilege escalation
+#
+# Lower priority (unless clear impact is demonstrated):
+# - Best-practice recommendations without exploitability
+# - Automated scan results without validation
+# - Hypothetical or purely theoretical scenarios
+#
+# We focus on issues affecting supported browsers and standard user environments.
+
+# ---- Bounties & Communication ----
+#
+# Bounties are considered case-by-case for reports that:
+# - Identify a previously unknown issue
+# - Demonstrate real security impact
+# - Are responsibly disclosed
+#
+# The amount of time spent on a report is not a factor in how we evaluate it or whether a
+# discretionary bounty is awarded.
+#
+# We appreciate concise, professional reports focused on reproduction and impact.
+# Repeated follow-ups or negotiation of bounty amounts are unlikely to change outcomes and may
+# delay our response.
+
+Preferred-Languages: en
+Canonical: https://academia.edu/.well-known/security.txt
+Expires: 2026-09-05T13:19:48Z

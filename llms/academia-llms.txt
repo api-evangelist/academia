@@ -1,0 +1,53 @@
+# Academia
+
+> Academia (Academia.edu, Academia Inc.) is a San Francisco based platform for sharing and discovering
+> academic research, founded in 2008 by Richard Price. Researchers upload papers, build public profiles,
+> follow research interests and track readership analytics; the company also runs the Academia journals
+> program and sells Academia Premium subscriptions. Academia publishes no public developer program, API
+> reference or machine-readable API specification.
+
+## Status of the API surface
+
+- Academia.edu has **no public API**, no developer portal and no published OpenAPI, AsyncAPI, GraphQL SDL
+  or MCP server as of 2026-08-06.
+- The `/v0/*` JSON endpoints referenced in `robots.txt` are the internal surface of Academia's own web
+  client. They are `Disallow`ed to every crawler except three read-only paths
+  (`/v0/users/*/following`, `/v0/users/*/coauthors`, `/v0/google_drive/notify_change`) and carry no
+  published contract.
+- The HTML site is served behind a Cloudflare managed challenge (`cf-mitigated: challenge`), so
+  automated clients receive a 403 interstitial for `text/html` paths. `/robots.txt` and `/.well-known/*`
+  are exempt.
+
+## Site
+
+- [Academia.edu](https://www.academia.edu/): main platform.
+- [Academia Support](https://support.academia.edu/hc/en-us): help center covering accounts, uploads,
+  analytics and Academia Premium.
+- [Terms](https://www.academia.edu/terms)
+- [Privacy](https://www.academia.edu/privacy)
+- [GitHub organization](https://github.com/academia-edu): 81 public repositories, all internal Rails /
+  infrastructure tooling and forks (`dejunk`, `cached_counts`, `linting-config`, `human-name-rb`,
+  `redis_locks`). No client SDK and no specification for an Academia API.
+
+## Machine-readable documents Academia does publish
+
+- [security.txt](https://www.academia.edu/.well-known/security.txt): RFC 9116, contact
+  `security@academia.edu`, full disclosure policy inline as comments, expires 2026-09-05.
+- [robots.txt](https://www.academia.edu/robots.txt): 2,624 lines, a separate block for each of 59 named
+  crawlers including the AI/agent user-agents GPTBot, OAI-SearchBot, ChatGPT-User, Claude-SearchBot,
+  Claude-User, Google-Extended, Gemini-Deep-Research, Applebot-Extended, PerplexityBot, Perplexity-User,
+  DuckAssistBot, MistralAI-User, TavilyBot, YouBot and Kagibot.
+
+## API Evangelist profile artifacts
+
+- [apis.yml](https://raw.githubusercontent.com/api-evangelist/academia/refs/heads/main/apis.yml)
+- [well-known/academia-well-known.yml](well-known/academia-well-known.yml): probe index with statuses.
+- [well-known/academia-security.txt](well-known/academia-security.txt): verbatim copy.
+- [well-known/academia-robots.txt](well-known/academia-robots.txt): verbatim copy.
+- [security/academia-vulnerability-disclosure.yml](security/academia-vulnerability-disclosure.yml)
+- [security/academia-domain-security.yml](security/academia-domain-security.yml)
+
+---
+generated: '2026-08-06'
+method: generated
+source: apis.yml + repo artifacts (no provider-published /llms.txt; https://www.academia.edu/llms.txt returned 404)

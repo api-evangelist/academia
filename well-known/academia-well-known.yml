@@ -1,0 +1,63 @@
+generated: '2026-08-06'
+method: searched
+source: live probes of /.well-known/ on Academia hosts
+note: >-
+  The academia.edu HTML surface sits behind a Cloudflare managed challenge (response header
+  `cf-mitigated: challenge`), so every text/html path answers 403 to a non-browser client. The
+  /.well-known/ and /robots.txt paths are exempted from the challenge and returned real status codes,
+  which is what makes the 404s below trustworthy rather than an artifact of the block.
+hosts:
+- host: https://www.academia.edu
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: academia-security.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /robots.txt
+    status: 200
+    file: academia-robots.txt
+    note: >-
+      2,624 lines. Academia writes a separate per-user-agent block for 59 named crawlers, including the
+      AI/agent user-agents GPTBot, OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User,
+      Google-Extended, Gemini-Deep-Research, Applebot-Extended, PerplexityBot, Perplexity-User,
+      DuckAssistBot, MistralAI-User, TavilyBot, YouBot and Kagibot. Every one of those blocks disallows
+      /v0/* (the JSON surface the web client calls) and /papers/*, while allowing exactly three read-only
+      /v0 paths - /v0/users/*/following, /v0/users/*/coauthors and /v0/google_drive/notify_change.
+- host: https://support.academia.edu
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /robots.txt
+    status: 200
+x-evidence:
+  fetched: '2026-08-06'
+  probes:
+  - url: https://www.academia.edu/.well-known/security.txt
+    http_status: 200
+    content_type: text/plain; charset=utf-8
+  - url: https://www.academia.edu/llms.txt
+    http_status: 404
+  - url: https://www.academia.edu/.well-known/api-catalog
+    http_status: 404
+  - url: https://www.academia.edu/.well-known/agent-card.json
+    http_status: 404
+  - url: https://www.academia.edu/
+    http_status: 403
+    note: 'cf-mitigated: challenge (Cloudflare managed challenge interstitial)'
