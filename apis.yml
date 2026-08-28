@@ -10,6 +10,17 @@ description: >-
   own web client calls are explicitly disallowed to crawlers in robots.txt. It does publish an RFC 9116
   security.txt with a named security contact and a disclosure posture, and a long per-crawler robots.txt
   that names AI and agent user-agents individually.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.academia.edu/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/academia/refs/heads/main/apis.yml
 x-type: company
